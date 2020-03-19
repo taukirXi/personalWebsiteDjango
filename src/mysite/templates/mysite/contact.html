@@ -28,7 +28,7 @@
     <div class="col-sm-7" style="margin-top: 70px">
 
 
-        <form>
+        <form action="{% url 'contact' %}" method="post">
             {% csrf_token %}
             <div class="form-group row">
                 <label for="example-email-input" class="col-2 col-form-label">Email</label>
@@ -56,5 +56,7 @@
 
     </div>
 </div>
+
+
 
 {% endblock %}

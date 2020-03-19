@@ -1,4 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import (
+    Contact,
+)
 
 
 # Create your views here.
@@ -16,6 +20,16 @@ def portfolio(request):
 
 def contact(request):
     # TODO: integrate with database; validation of form page
-
     context = {}
-    return render(request, 'mysite/contact.html', context)
+    if request.method == 'POST':
+        objemail = request.POST.get('email')
+        objsubject = request.POST.get('subject')
+        objmessage = request.POST.get('message')
+
+        c = Contact(email=objemail, subject=objsubject, message=objmessage)
+        c.save()
+
+        return render(request, 'mysite/contact.html', context=None)
+    else:
+
+        return render(request, 'mysite/contact.html', context)
