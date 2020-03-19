@@ -15,5 +15,7 @@ def portfolio(request):
 
 
 def contact(request):
+    # TODO: integrate with database; validation of form page
+
     context = {}
     return render(request, 'mysite/contact.html', context)
